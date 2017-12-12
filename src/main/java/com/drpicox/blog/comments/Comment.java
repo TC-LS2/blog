@@ -39,6 +39,12 @@ public class Comment {
         this.body = body;
     }
 
+    public static Comment withId(Long postId) {
+        if (postId == null) return null;
+
+        return new Comment(postId, (User) null, null, null);
+    }
+
     @JsonCreator
     public Comment(
             @JsonProperty("id") Long id,
