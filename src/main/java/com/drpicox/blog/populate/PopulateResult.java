@@ -2,6 +2,7 @@ package com.drpicox.blog.populate;
 
 import com.drpicox.blog.comments.Comment;
 import com.drpicox.blog.posts.Post;
+import com.drpicox.blog.reports.Report;
 import com.drpicox.blog.users.User;
 
 import java.util.Collection;
@@ -11,11 +12,13 @@ public class PopulateResult {
     public Collection<Comment> comments;
     public Collection<Post> posts;
     public Collection<User> users;
+    public Collection<Report> reports;
 
-    public PopulateResult(Collection<Comment> comments, Collection<Post> posts, Collection<User> users) {
+    public PopulateResult(Collection<Comment> comments, Collection<Post> posts, Collection<User> users, Collection<Report> reports) {
         this.comments = comments;
         this.posts = posts;
         this.users = users;
+        this.reports = reports;
     }
 
     public Collection<Comment> getComments() {
@@ -29,5 +32,7 @@ public class PopulateResult {
     public Collection<User> getUsers() {
         return users;
     }
+
+    public Collection<Report> getReports() { return reports; }
 
 }
