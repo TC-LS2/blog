@@ -7,7 +7,6 @@ import DenunciaInput from '../components/DenunciaInput';
 const mapStateToProps = function(state) {
   return {
     reporterId: getCurrentUserId(state),
-    reportedId: getUser(state),
   };
 };
 
