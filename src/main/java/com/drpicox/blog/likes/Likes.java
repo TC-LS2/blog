@@ -22,7 +22,7 @@ public class Likes {
     @GeneratedValue
     private Long id;
 
-    private boolean like;
+    private boolean likeBTN;
 
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -34,7 +34,7 @@ public class Likes {
 
     public Likes(Long id, boolean like, Comment comment, User commenter) {
         this.id = id;
-        this.like = like;
+        this.likeBTN = like;
         this.comment = comment;
         this.user = commenter;
     }
@@ -54,7 +54,7 @@ public class Likes {
         result.put("id", id);
         result.put("commentId", comment != null ? comment.getId() : null);
         result.put("userId", user != null ? user.getId() : null);
-        result.put("like", like);
+        result.put("like", likeBTN);
         return result;
     }
 
@@ -63,7 +63,7 @@ public class Likes {
     }
 
     public boolean isLike() {
-        return like;
+        return likeBTN;
     }
 
     public Comment getComment() {
