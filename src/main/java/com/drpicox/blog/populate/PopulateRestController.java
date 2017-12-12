@@ -2,6 +2,8 @@ package com.drpicox.blog.populate;
 
 import com.drpicox.blog.comments.Comment;
 import com.drpicox.blog.comments.CommentRestController;
+import com.drpicox.blog.likes.Like;
+import com.drpicox.blog.likes.LikeRestController;
 import com.drpicox.blog.posts.Post;
 import com.drpicox.blog.posts.PostRestController;
 import com.drpicox.blog.users.User;
@@ -20,6 +22,7 @@ public class PopulateRestController {
     @Autowired private UserRestController users;
     @Autowired private PostRestController posts;
     @Autowired private CommentRestController comments;
+    @Autowired private LikeRestController likes;
 
     private static String LOREM_IPSUM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
 
@@ -44,12 +47,20 @@ public class PopulateRestController {
             Comment comment6 = comments.createComment(new Comment(null, bea, post4, "agggggggg!"));
             Comment comment7 = comments.createComment(new Comment(null, bea, post4, "we are borg"));
             Comment comment8 = comments.createComment(new Comment(null, alice, post2, "prepare to be assimilated"));
+
+            Like like1 = likes.createLike(new Like (null, alice, bea, true));
+            Like like2 = likes.createLike(new Like (null, alice, cally, true));
+            Like like3 = likes.createLike(new Like (null, cally, alice, false));
+            Like like4 = likes.createLike(new Like (null, cally, bea, false));
+            Like like5 = likes.createLike(new Like (null, bea, alice, true));
+            Like like6 = likes.createLike(new Like (null, bea, cally, false));
         }
 
         return new PopulateResult(
                 comments.getComments(),
                 posts.getPosts(),
-                users.getUsers()
+                users.getUsers(),
+                likes.getLikes()
         );
     }
 }

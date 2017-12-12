@@ -5,6 +5,7 @@ import com.drpicox.blog.RestHelper;
 import com.drpicox.blog.com.drpicox.blog.comments.CommentsHelper;
 import com.drpicox.blog.com.drpicox.blog.posts.PostsHelper;
 import com.drpicox.blog.com.drpicox.blog.users.UsersHelper;
+import com.drpicox.blog.likes.LikeRepository;
 import com.drpicox.blog.populate.PopulateResult;
 import com.drpicox.blog.posts.Post;
 import com.drpicox.blog.users.User;
@@ -51,12 +52,16 @@ public class PopulateTests {
     @Autowired
     private UsersHelper users;
 
+    @Autowired
+    private LikeRepository likes;
+
 
     @Before
     public void setup() throws Exception {
         this.mockMvc = rest.createMockMvc();
         this.contentType = rest.getContentType();
 
+        likes.deleteAllInBatch();
         comments.cleanup();
         posts.cleanup();
         users.cleanup();
@@ -68,7 +73,8 @@ public class PopulateTests {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.comments.length()", is(greaterThan(0))))
                 .andExpect(jsonPath("$.posts.length()", is(greaterThan(0))))
-                .andExpect(jsonPath("$.users.length()", is(greaterThan(0))));
+                .andExpect(jsonPath("$.users.length()", is(greaterThan(0))))
+                .andExpect(jsonPath("$.likes.length()", is(greaterThan(0))));
     }
 
     @Test
