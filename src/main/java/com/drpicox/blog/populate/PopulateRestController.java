@@ -2,6 +2,8 @@ package com.drpicox.blog.populate;
 
 import com.drpicox.blog.comments.Comment;
 import com.drpicox.blog.comments.CommentRestController;
+import com.drpicox.blog.postSteps.PostSteps;
+import com.drpicox.blog.postSteps.PostStepsRestController;
 import com.drpicox.blog.posts.Post;
 import com.drpicox.blog.posts.PostRestController;
 import com.drpicox.blog.users.User;
@@ -19,6 +21,7 @@ public class PopulateRestController {
 
     @Autowired private UserRestController users;
     @Autowired private PostRestController posts;
+    @Autowired private PostStepsRestController postsSteps;
     @Autowired private CommentRestController comments;
 
     private static String LOREM_IPSUM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
@@ -36,6 +39,15 @@ public class PopulateRestController {
             Post post3 = posts.createPost(new Post(null, alice, "Alice Assimilates", "Resistance is futile. " + LOREM_IPSUM));
             Post post4 = posts.createPost(new Post(null, alice, "Alice Assimilates ][", "Assimilating. " + LOREM_IPSUM));
 
+            PostSteps postStep1 = postsSteps.createPostSteps(new PostSteps(null, post1, "INSTRUCTIONS FOR POST 1:" +
+                "\n This is a test 1"));
+            PostSteps postStep2 = postsSteps.createPostSteps(new PostSteps(null, post2, "INSTRUCTIONS FOR POST 2:" +
+                "\n This is a test 2"));
+            PostSteps postStep3 = postsSteps.createPostSteps(new PostSteps(null, post3, "INSTRUCTIONS FOR POST 3:" +
+                "\n This is a test 3"));
+            PostSteps postStep4 = postsSteps.createPostSteps(new PostSteps(null, post4, "INSTRUCTIONS FOR POST 4:" +
+                "\n This is a test 4"));
+
             Comment comment1 = comments.createComment(new Comment(null, cally, post1, "youre welcome alice!"));
             Comment comment2 = comments.createComment(new Comment(null, cally, post2, "youre welcome bea!"));
             Comment comment3 = comments.createComment(new Comment(null, cally, post3, "be careful, we are friends"));
@@ -49,6 +61,7 @@ public class PopulateRestController {
         return new PopulateResult(
                 comments.getComments(),
                 posts.getPosts(),
+                postsSteps.getPostSteps(),
                 users.getUsers()
         );
     }

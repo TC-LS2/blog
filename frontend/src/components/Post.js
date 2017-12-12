@@ -3,6 +3,7 @@ import { PageHeader } from 'react-bootstrap';
 
 import NewPostComment from '../containers/NewPostComment';
 import PostCommentsList from '../containers/PostCommentsList';
+import PostStepsList from '../containers/PostStepsList';
 import PostAuthorLabel from '../containers/PostAuthorLabel';
 import ViewLink from '../containers/ViewLink';
 
@@ -22,6 +23,7 @@ export default function Post(props) {
       <ViewLink text="« Back" root="posts" />
       <br />
       <br />
+      <PostStepsList postId={props.post.id} />
       <PostCommentsList postId={props.post.id} />
       <NewPostComment postId={props.post.id} />
     </div>
