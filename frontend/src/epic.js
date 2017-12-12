@@ -8,6 +8,8 @@ import postsEpic from './posts/epic';
 import populateEpic from './populate/epic';
 import usersEpic from './users/epic';
 import viewEpic from './view/epic';
+import ratingsEpic from './ratings/epic';
+
 
 export default combineEpics(
   commentsEpic,
@@ -16,4 +18,5 @@ export default combineEpics(
   populateEpic,
   usersEpic,
   viewEpic,
+  ratingsEpic
 );
