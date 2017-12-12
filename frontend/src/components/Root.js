@@ -7,6 +7,8 @@ import MyPostsList from '../containers/MyPostsList';
 import NewPost from '../containers/NewPost';
 import ViewPost from '../containers/ViewPost';
 import ViewUser from '../containers/ViewUser';
+import AllDenunciesList from "../containers/AllDenunciesList";
+import NewDenuncia from "../containers/NewDenuncia";
 
 export default function ViewRoot(props) {
   switch (props.root) {
@@ -24,6 +26,10 @@ export default function ViewRoot(props) {
       return <ViewUser />;
     case 'users':
       return <AllUsersList />;
+    case 'denuncies':
+      return <AllDenunciesList />
+    case 'newDenuncia' :
+      return <NewDenuncia />
     default:
       return (
         <span>

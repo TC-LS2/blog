@@ -2,6 +2,8 @@ package com.drpicox.blog.populate;
 
 import com.drpicox.blog.comments.Comment;
 import com.drpicox.blog.comments.CommentRestController;
+import com.drpicox.blog.denuncies.Denuncia;
+import com.drpicox.blog.denuncies.DenunciaRestController;
 import com.drpicox.blog.posts.Post;
 import com.drpicox.blog.posts.PostRestController;
 import com.drpicox.blog.users.User;
@@ -11,15 +13,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Collection;
-
 @RestController
 @RequestMapping("/populate")
 public class PopulateRestController {
 
-    @Autowired private UserRestController users;
-    @Autowired private PostRestController posts;
-    @Autowired private CommentRestController comments;
+    @Autowired
+    private UserRestController users;
+    @Autowired
+    private PostRestController posts;
+    @Autowired
+    private CommentRestController comments;
+    @Autowired
+    private DenunciaRestController denuncies;
 
     private static String LOREM_IPSUM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
 
@@ -44,12 +49,17 @@ public class PopulateRestController {
             Comment comment6 = comments.createComment(new Comment(null, bea, post4, "agggggggg!"));
             Comment comment7 = comments.createComment(new Comment(null, bea, post4, "we are borg"));
             Comment comment8 = comments.createComment(new Comment(null, alice, post2, "prepare to be assimilated"));
+
+            Denuncia denuncia1 = denuncies.createDenuncia(new Denuncia(null, alice, bea, "She is useless"));
+            Denuncia denuncia2 = denuncies.createDenuncia(new Denuncia(null,bea,alice,"She called me useless"));
+            Denuncia denuncia3 = denuncies.createDenuncia(new Denuncia(null,cally,alice,"she called her useless"));
         }
 
         return new PopulateResult(
-                comments.getComments(),
-                posts.getPosts(),
-                users.getUsers()
+            comments.getComments(),
+            posts.getPosts(),
+            users.getUsers(),
+            denuncies.getDenuncies()
         );
     }
 }
