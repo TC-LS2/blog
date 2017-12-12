@@ -1,5 +1,6 @@
 package com.drpicox.blog.likes;
 
+import com.drpicox.blog.comments.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

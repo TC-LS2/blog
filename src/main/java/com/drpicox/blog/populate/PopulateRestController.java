@@ -50,15 +50,35 @@ public class PopulateRestController {
             Comment comment8 = comments.createComment(new Comment(null, alice, post2, "prepare to be assimilated"));
 
             Likes likes1 = likes.createLike(new Likes(null, true, comment1, alice));
-            Likes likes2 = likes.createLike(new Likes(null, true, comment2, cally));
+            comment1.newLike();
+            comments.newLike(comment1);
+            Likes likes2 = likes.createLike(new Likes(null, false, comment2, cally));
+            comment2.newDislike();
+            comments.newLike(comment2);
             Likes likes3 = likes.createLike(new Likes(null, true, comment3, alice));
+            comment3.newLike();
+            comments.newLike(comment3);
             Likes likes4 = likes.createLike(new Likes(null, true, comment4, alice));
+            comment4.newLike();
+            comments.newLike(comment4);
             Likes likes5 = likes.createLike(new Likes(null, true, comment5, bea));
+            comment5.newLike();
+            comments.newLike(comment5);
             Likes likes6 = likes.createLike(new Likes(null, true, comment1, bea));
+            comment1.newLike();
+            comments.newLike(comment1);
             Likes likes7 = likes.createLike(new Likes(null, true, comment2, bea));
+            comment2.newLike();
+            comments.newLike(comment2);
             Likes likes8 = likes.createLike(new Likes(null, true, comment3, cally));
+            comment3.newLike();
+            comments.newLike(comment3);
             Likes likes9 = likes.createLike(new Likes(null, true, comment4, cally));
+            comment4.newLike();
+            comments.newLike(comment4);
             Likes likes10 = likes.createLike(new Likes(null, true, comment5, alice));
+            comment5.newLike();
+            comments.newLike(comment5);
 
         }
 

@@ -6,10 +6,7 @@ import { connect } from 'react-redux';
 import CommentCommenterLabel from '../containers/CommentCommenterLabel';
 
 const onLikeClick = () => ({
-  /*
-  type: actions.GO_DIRECTION,
-  direction: NORTH,
-  */
+
 });
 
 const BtnLike = connect(
@@ -22,10 +19,7 @@ const BtnLike = connect(
 )(Boto);
 
 const onDislikeClick = () => ({
-  /*
-  type: actions.GO_DIRECTION,
-  direction: NORTH,
-  */
+
 });
 
 const BtnDislike = connect(
@@ -47,6 +41,8 @@ export default function CommentsList(props) {
               <CommentCommenterLabel comment={comment} /> says:
             </Media.Heading>
             <p>{comment.body}</p>
+            <p>Likes: {comment.likes} </p>
+            <p>Dislikes: {comment.dislikes} </p>
             <BtnLike />
             <br />
             <BtnDislike />

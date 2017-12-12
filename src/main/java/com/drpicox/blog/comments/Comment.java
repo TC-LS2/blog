@@ -31,12 +31,16 @@ public class Comment {
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Post post;
+    private int likes;
+    private int dislikes;
 
     public Comment(Long id, User commenter, Post post, String body) {
         this.id = id;
         this.commenter = commenter;
         this.post = post;
         this.body = body;
+        this.likes = 0;
+        this.dislikes = 0;
     }
 
     public static Comment withId(Long postId) {
@@ -61,6 +65,8 @@ public class Comment {
         result.put("commenterId", commenter != null ? commenter.getId() : null);
         result.put("postId", post != null ? post.getId() : null);
         result.put("body", body);
+        result.put("likes", likes);
+        result.put(("dislikes"), dislikes);
         return result;
     }
 
@@ -68,6 +74,21 @@ public class Comment {
         return id;
     }
 
+    public void newLike() {
+        this.likes++;
+    }
+
+    public void newDislike() {
+        this.dislikes++;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public int getDislikes() {
+        return dislikes;
+    }
 
     Comment() {}
 

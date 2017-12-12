@@ -41,4 +41,9 @@ public class CommentRestController {
         commentRepository.delete(commentId);
         return comment;
     }
+
+    @PostMapping("/like/{comment}")
+    public void newLike(@PathVariable Comment comment) {
+        this.commentRepository.save(comment);
+    }
 }
