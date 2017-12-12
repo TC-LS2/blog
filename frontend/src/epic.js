@@ -7,6 +7,7 @@ import currentUserEpic from './current-user/epic';
 import postsEpic from './posts/epic';
 import populateEpic from './populate/epic';
 import usersEpic from './users/epic';
+import interactionEpic from './interactions/epic';
 import viewEpic from './view/epic';
 
 export default combineEpics(
@@ -16,4 +17,5 @@ export default combineEpics(
   populateEpic,
   usersEpic,
   viewEpic,
+  interactionEpic
 );
