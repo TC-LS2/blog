@@ -28,4 +28,4 @@ export function fetchReportsEpic(action$) {
     );
 }
 
-export default combineEpics(fetchReportsEpic);
+export default combineEpics(createReportEpic, fetchReportsEpic);

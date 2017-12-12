@@ -7,6 +7,7 @@ import MyCommentsList from '../containers/MyCommentsList';
 import MyPostsList from '../containers/MyPostsList';
 import NewPost from '../containers/NewPost';
 import ViewPost from '../containers/ViewPost';
+import NewReport from '../containers/NewReport';
 import ViewUser from '../containers/ViewUser';
 import ViewReport from '../containers/ViewReport';
 
@@ -22,6 +23,8 @@ export default function ViewRoot(props) {
       return <ViewPost />;
     case 'posts':
       return <AllPostsList />;
+    case 'newReport':
+      return <NewReport />;
     case 'report':
       return <ViewReport />;
     case 'reports':

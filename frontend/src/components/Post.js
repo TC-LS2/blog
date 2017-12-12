@@ -19,7 +19,8 @@ export default function Post(props) {
       {props.post.body}
       <br />
       <br />
-      <ViewLink text="« Back" root="posts" />
+      <ViewLink className="btn btn-primary" text="« Back" root="posts" />
+      <ViewLink className="btn btn-danger pull-right" text="Report" root="newReport" />
       <br />
       <br />
       <PostCommentsList postId={props.post.id} />
