@@ -61,4 +61,6 @@ public class Todo {
         return id;
     }
 
+    Todo() {}
+
 }
