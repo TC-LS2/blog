@@ -5,6 +5,7 @@ import {
   fetchCommentsFulfilled,
   fetchPostsFulfilled,
   fetchUsersFulfilled,
+  fetchReportsFulfilled
 } from '../actions';
 
 export function doPopulateEpic(action$) {
@@ -17,6 +18,7 @@ export function doPopulateEpic(action$) {
           fetchCommentsFulfilled(result.response.comments),
           fetchPostsFulfilled(result.response.posts),
           fetchUsersFulfilled(result.response.users),
+          fetchReportsFulfilled(result.response.reports),
         ]),
     );
 }
