@@ -1,5 +1,6 @@
 package com.drpicox.blog.com.drpicox.blog.likes;
 
+import com.drpicox.blog.likes.Likes;
 import com.drpicox.blog.likes.LikesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,7 +14,5 @@ public class LikesHelper {
     public void cleanup() throws Exception {
         likesRepository.deleteAllInBatch();
     }
-
-
 
 }

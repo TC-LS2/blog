@@ -23,8 +23,10 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.io.IOException;
 
+import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.isA;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -80,8 +82,25 @@ public class LikesTest {
             .andExpect(jsonPath("$.like", is(true)));
     }
 
+    @Test
+    public void getLikes() throws Exception {
+
+        User cally = users.createUser(new User(null, "cally", "cally@caprica.ss"));
+        Post post1 = posts.createPost(new Post(null, cally, "Alice is Here!", "fnewniofew fneiownfiew fneiow"));
+        Comment comment1 = comments.createComment(new Comment(null, cally, post1, "youre welcome alice!"));
+        Likes likes1 = likes.createLike(new Likes(null, true, comment1, cally));
+
+        this.mockMvc.perform(get("/likes"))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$", contains(object(likes1))));
+    }
+
     private String json(Object o) throws IOException {
         return rest.toJson(o);
+    }
+
+    private Object object(Object o) throws IOException {
+        return rest.eraseType(o);
     }
 
 }
