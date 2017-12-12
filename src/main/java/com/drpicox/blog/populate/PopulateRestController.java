@@ -5,11 +5,11 @@ import com.drpicox.blog.comments.CommentRestController;
 import com.drpicox.blog.posts.Post;
 import com.drpicox.blog.posts.PostRestController;
 import com.drpicox.blog.users.User;
+import com.drpicox.blog.users.UserRepository;
 import com.drpicox.blog.users.UserRestController;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
@@ -17,12 +17,21 @@ import java.util.Collection;
 @RequestMapping("/populate")
 public class PopulateRestController {
 
+    @Autowired
+    private PopulateRepository populateRepository;
+
     @Autowired private UserRestController users;
     @Autowired private PostRestController posts;
     @Autowired private CommentRestController comments;
 
     private static String LOREM_IPSUM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
 
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Populate createPopulate(@RequestBody Populate populate) {
+        populateRepository.save(populate);
+        return populate;
+    }
 
     @GetMapping
     public PopulateResult populate() {
@@ -44,12 +53,17 @@ public class PopulateRestController {
             Comment comment6 = comments.createComment(new Comment(null, bea, post4, "agggggggg!"));
             Comment comment7 = comments.createComment(new Comment(null, bea, post4, "we are borg"));
             Comment comment8 = comments.createComment(new Comment(null, alice, post2, "prepare to be assimilated"));
+
+            Populate populate1 = this.createPopulate(new Populate(null, 0, comment1, alice));
+            Populate populate2 = this.createPopulate(new Populate(null, 1, comment2, alice));
+            Populate populate3 = this.createPopulate(new Populate(null, 2, comment3, alice));
         }
 
         return new PopulateResult(
                 comments.getComments(),
                 posts.getPosts(),
-                users.getUsers()
+                users.getUsers(),
+                this.populateRepository.findAllByOrderByIdDesc()
         );
     }
 }
