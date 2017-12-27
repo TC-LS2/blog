@@ -4,6 +4,8 @@ import com.drpicox.blog.comments.Comment;
 import com.drpicox.blog.comments.CommentRestController;
 import com.drpicox.blog.posts.Post;
 import com.drpicox.blog.posts.PostRestController;
+import com.drpicox.blog.reports.Report;
+import com.drpicox.blog.reports.ReportRestController;
 import com.drpicox.blog.users.User;
 import com.drpicox.blog.users.UserRestController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,7 @@ public class PopulateRestController {
     @Autowired private UserRestController users;
     @Autowired private PostRestController posts;
     @Autowired private CommentRestController comments;
+    @Autowired private ReportRestController reports;
 
     private static String LOREM_IPSUM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
 
@@ -44,12 +47,16 @@ public class PopulateRestController {
             Comment comment6 = comments.createComment(new Comment(null, bea, post4, "agggggggg!"));
             Comment comment7 = comments.createComment(new Comment(null, bea, post4, "we are borg"));
             Comment comment8 = comments.createComment(new Comment(null, alice, post2, "prepare to be assimilated"));
+
+            Report report1 = reports.createReport(new Report(null, "Blame to another user", post1, cally));
+            Report report2 = reports.createReport(new Report(null, "Fake post", post3, bea));
         }
 
         return new PopulateResult(
                 comments.getComments(),
                 posts.getPosts(),
-                users.getUsers()
+                users.getUsers(),
+                reports.getReports()
         );
     }
 }

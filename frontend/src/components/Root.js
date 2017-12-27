@@ -2,11 +2,14 @@ import React from 'react';
 
 import AllPostsList from '../containers/AllPostsList';
 import AllUsersList from '../containers/AllUsersList';
+import AllReportsList from '../containers/AllReportsList';
 import MyCommentsList from '../containers/MyCommentsList';
 import MyPostsList from '../containers/MyPostsList';
 import NewPost from '../containers/NewPost';
 import ViewPost from '../containers/ViewPost';
+import NewReport from '../containers/NewReport';
 import ViewUser from '../containers/ViewUser';
+import ViewReport from '../containers/ViewReport';
 
 export default function ViewRoot(props) {
   switch (props.root) {
@@ -20,6 +23,12 @@ export default function ViewRoot(props) {
       return <ViewPost />;
     case 'posts':
       return <AllPostsList />;
+    case 'newReport':
+      return <NewReport />;
+    case 'report':
+      return <ViewReport />;
+    case 'reports':
+      return <AllReportsList />;
     case 'user':
       return <ViewUser />;
     case 'users':
