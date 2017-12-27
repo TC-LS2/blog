@@ -2,6 +2,8 @@ import React from 'react';
 import { PageHeader } from 'react-bootstrap';
 
 import ViewLink from '../containers/ViewLink';
+import UserPertinencesList from '../containers/UserPertinencesList';
+
 
 export default function Post(props) {
   return (
@@ -16,6 +18,9 @@ export default function Post(props) {
           <strong>Email: </strong>
           {props.user.email}
         </li>
+    <li><strong> Pertinences: </strong>
+        <UserPertinencesList />
+      </li>
       </ul>
       <ViewLink text="« Back" root="users" />
     </div>

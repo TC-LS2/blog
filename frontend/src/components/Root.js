@@ -24,6 +24,7 @@ export default function ViewRoot(props) {
       return <ViewUser />;
     case 'users':
       return <AllUsersList />;
+
     default:
       return (
         <span>

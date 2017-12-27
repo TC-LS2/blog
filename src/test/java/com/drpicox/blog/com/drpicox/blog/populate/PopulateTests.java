@@ -68,7 +68,8 @@ public class PopulateTests {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.comments.length()", is(greaterThan(0))))
                 .andExpect(jsonPath("$.posts.length()", is(greaterThan(0))))
-                .andExpect(jsonPath("$.users.length()", is(greaterThan(0))));
+                .andExpect(jsonPath("$.users.length()", is(greaterThan(0))))
+                .andExpect(jsonPath("$.pertinences.length()", is(greaterThan(0))));
     }
 
     @Test

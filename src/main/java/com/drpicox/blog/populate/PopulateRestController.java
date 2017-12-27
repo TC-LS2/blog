@@ -1,5 +1,7 @@
 package com.drpicox.blog.populate;
 
+import com.drpicox.blog.Pertinensa.Pertinensa;
+import com.drpicox.blog.Pertinensa.PertinensaRestController;
 import com.drpicox.blog.comments.Comment;
 import com.drpicox.blog.comments.CommentRestController;
 import com.drpicox.blog.posts.Post;
@@ -20,6 +22,7 @@ public class PopulateRestController {
     @Autowired private UserRestController users;
     @Autowired private PostRestController posts;
     @Autowired private CommentRestController comments;
+    @Autowired private PertinensaRestController pertinences;
 
     private static String LOREM_IPSUM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
 
@@ -44,12 +47,18 @@ public class PopulateRestController {
             Comment comment6 = comments.createComment(new Comment(null, bea, post4, "agggggggg!"));
             Comment comment7 = comments.createComment(new Comment(null, bea, post4, "we are borg"));
             Comment comment8 = comments.createComment(new Comment(null, alice, post2, "prepare to be assimilated"));
+
+            Pertinensa pertinensa=pertinences.createPertinensa(new Pertinensa(null,alice,"hello alice"));
+            System.out.println(pertinensa.getId());
+            pertinences.createPertinensa(new Pertinensa(null, bea,"hello bea"));
+            pertinences.createPertinensa(new Pertinensa(null,alice,"welcome alice"));
         }
 
         return new PopulateResult(
                 comments.getComments(),
                 posts.getPosts(),
-                users.getUsers()
+                users.getUsers(),
+                pertinences.getPertinences()
         );
     }
 }
