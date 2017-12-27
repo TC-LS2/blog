@@ -3,6 +3,7 @@ import 'rxjs/Rx';
 import { combineEpics } from 'redux-observable';
 
 import commentsEpic from './comments/epic';
+import denunciesEpic from './denuncies/epic';
 import currentUserEpic from './current-user/epic';
 import postsEpic from './posts/epic';
 import populateEpic from './populate/epic';
@@ -16,4 +17,5 @@ export default combineEpics(
   populateEpic,
   usersEpic,
   viewEpic,
+  denunciesEpic,
 );

@@ -16,6 +16,7 @@ export default function Post(props) {
           <strong>Email: </strong>
           {props.user.email}
         </li>
+        <ViewLink text="Report" root="newDenuncia"/>
       </ul>
       <ViewLink text="« Back" root="users" />
     </div>
