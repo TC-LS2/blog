@@ -16,6 +16,8 @@ export default function ViewRoot(props) {
       return <MyPostsList />;
     case 'newPost':
       return <NewPost />;
+    case 'interaction':
+      return <NewInteraction />;
     case 'post':
       return <ViewPost />;
     case 'posts':

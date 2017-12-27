@@ -20,3 +20,7 @@ export const getCurrentUserPostsList = createSelector(
   (postsList, currentUserId) =>
     postsList.filter(post => post.authorId === currentUserId),
 );
+
+export const getInteractionList = createSelector(
+  [get]
+)
