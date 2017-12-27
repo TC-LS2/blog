@@ -5,6 +5,8 @@ import currentUser from './current-user/reducer';
 import posts from './posts/reducer';
 import users from './users/reducer';
 import view from './view/reducer';
+import ratings from './ratings/reducer';
+
 
 export default combineReducers({
   comments,
@@ -12,4 +14,5 @@ export default combineReducers({
   posts,
   users,
   view,
+  ratings,
 });

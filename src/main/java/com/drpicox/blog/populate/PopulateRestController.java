@@ -4,14 +4,14 @@ import com.drpicox.blog.comments.Comment;
 import com.drpicox.blog.comments.CommentRestController;
 import com.drpicox.blog.posts.Post;
 import com.drpicox.blog.posts.PostRestController;
+import com.drpicox.blog.ratings.Rating;
+import com.drpicox.blog.ratings.RatingRestController;
 import com.drpicox.blog.users.User;
 import com.drpicox.blog.users.UserRestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Collection;
 
 @RestController
 @RequestMapping("/populate")
@@ -20,6 +20,8 @@ public class PopulateRestController {
     @Autowired private UserRestController users;
     @Autowired private PostRestController posts;
     @Autowired private CommentRestController comments;
+    @Autowired private RatingRestController ratings;
+
 
     private static String LOREM_IPSUM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
 
@@ -44,6 +46,12 @@ public class PopulateRestController {
             Comment comment6 = comments.createComment(new Comment(null, bea, post4, "agggggggg!"));
             Comment comment7 = comments.createComment(new Comment(null, bea, post4, "we are borg"));
             Comment comment8 = comments.createComment(new Comment(null, alice, post2, "prepare to be assimilated"));
+
+            Rating rating1 = ratings.createRating(new Rating(1, post1, alice));
+            Rating rating2 = ratings.createRating(new Rating(2, post2, alice));
+            Rating rating3 = ratings.createRating(new Rating(3, post3, alice));
+            Rating rating4 = ratings.createRating(new Rating(4, post4, alice));
+
         }
 
         return new PopulateResult(
