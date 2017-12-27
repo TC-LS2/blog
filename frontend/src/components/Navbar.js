@@ -19,6 +19,7 @@ export default function MainNavbar() {
           <ViewNavItem root="newPost">[ New ]</ViewNavItem>
           <ViewNavItem root="myPosts">[ My Posts ]</ViewNavItem>
           <ViewNavItem root="myComments">[ My Comments ]</ViewNavItem>
+          <ViewNavItem root="myPopulates">[ My Populates ]</ViewNavItem>
         </Nav>
         <Nav pullRight>
           <ViewNavItem root="users">

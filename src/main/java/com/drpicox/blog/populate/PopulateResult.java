@@ -11,11 +11,16 @@ public class PopulateResult {
     public Collection<Comment> comments;
     public Collection<Post> posts;
     public Collection<User> users;
+    public Collection<Populate> populates;
 
-    public PopulateResult(Collection<Comment> comments, Collection<Post> posts, Collection<User> users) {
+    public PopulateResult(Collection<Comment> comments,
+                          Collection<Post> posts,
+                          Collection<User> users,
+                          Collection<Populate> populates) {
         this.comments = comments;
         this.posts = posts;
         this.users = users;
+        this.populates = populates;
     }
 
     public Collection<Comment> getComments() {
@@ -28,6 +33,10 @@ public class PopulateResult {
 
     public Collection<User> getUsers() {
         return users;
+    }
+
+    public Collection<Populate> getPopulates() {
+        return populates;
     }
 
 }
