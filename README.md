@@ -108,7 +108,7 @@ But it works, you can save the Post without problems and without corrupting user
 
 and then operate with the real user instance.
 
-Everything of this is possible thanks that "magic" comes from Annotations, and these annotations (and these magic) can be ignored to work with Java classes like POJOs.
+Everything of this is possible thanks that "magic" comes from Annotations, and these annotations (and these magic) can be ignored to work with Java classes value POJOs.
 
 
 
